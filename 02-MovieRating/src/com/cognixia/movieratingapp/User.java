@@ -1,8 +1,16 @@
 package com.cognixia.movieratingapp;
 
+import java.util.HashMap;
+
 public class User {
 	private String email;
 	private String password;
+	private HashMap<String, Integer> ratings;
+	
+	public HashMap<String, Integer> getRatings() {
+		return ratings;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -22,6 +30,11 @@ public class User {
 		super();
 		this.email = email;
 		this.password = password;
+		this.ratings = new HashMap<String, Integer>();
+	}
+	
+	public void addRating(String movieTitle, int rating) {
+		this.ratings.put(movieTitle, rating);
 	}
 	
 	

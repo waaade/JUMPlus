@@ -27,11 +27,12 @@ public class MoveRatingMain {
 		movieList.add(movie3);
 		movieList.add(movie4);
 		
+		user2.addRating("Napoleon Dynamite", 5);
 		
 		currentUser = loginMenu();
 		
 		if (currentUser != null) {
-			movieSelectionMenu();
+			movieSelectionMenu(currentUser);
 		}
 	}
 	
@@ -110,8 +111,15 @@ public class MoveRatingMain {
 		return currentUser;
 	}
 	
+	private static void displayUserRatings(User currentUser) {
+		for (String i : currentUser.getRatings().keySet()) {
+			System.out.println("Movie: " + i + " Your Rating: " + currentUser.getRatings().get(i));
+		}
+	}
+
+
 	// may be expanded for guest ratings in the future
-	private static void movieSelectionMenu() {
+	private static void movieSelectionMenu(User currentUser) {
 		boolean run = true;
 		Scanner scanner = new Scanner(System.in);
 		
@@ -121,8 +129,11 @@ public class MoveRatingMain {
 			displayMovieList();
 			
 			// The final option is to exit, but the number varies based on how many movies are in memory
-			Integer exitCommandNum = (Integer)(movieList.size() + 1);
-			String exitCommandString = exitCommandNum.toString(); 
+			Integer exitCommandNum = (Integer)(movieList.size() + 2);
+			Integer viewRatingsNum = (Integer)(movieList.size() + 1);
+			String exitCommandString = exitCommandNum.toString();
+			String viewRatingsString = viewRatingsNum.toString();
+			System.out.println("|  " + viewRatingsString + ". " + String.format("%-53s", "VIEW YOUR RATINGS") + "|");
 			System.out.println("|  " + exitCommandString + ". " + String.format("%-53s", "EXIT") + "|");
 			System.out.println("+===========================================================+");
 			System.out.println("Enter the number of a movie you want to rate, or " + exitCommandString + " to exit.");
@@ -130,17 +141,19 @@ public class MoveRatingMain {
 			if (choice == exitCommandNum) {
 				System.out.println("Exiting. Goodbye!");
 				run = false;
+			} else if (choice == viewRatingsNum)  {
+				displayUserRatings(currentUser);	
 			} else if (choice < 1 || choice > exitCommandNum) {
 				System.out.println("Invalid command.");
 			} else {
-				rateMovie(choice - 1); // can't forget to subtract 1 to match array index
+				rateMovie(choice - 1, currentUser); // can't forget to subtract 1 to match array index
 			}
 		} while (run);
 		scanner.close();
 		
 	}
 
-	private static void rateMovie(int choice) {
+	private static void rateMovie(int choice, User currentUser) {
 		Movie movieToRate = movieList.get(choice);
 		System.out.println("+===========================================================+");
 		System.out.println("|  Movie: " + String.format("%-48s", movieToRate.getTitle()) + "|");
@@ -162,7 +175,9 @@ public class MoveRatingMain {
 		rating = scanner.nextInt();
 		
 		movieToRate.addRating(rating);
+		currentUser.addRating(movieToRate.getTitle(), rating);
 		movieList.set(choice, movieToRate);
+		
 		System.out.println("Rating added.");
 	}
 	
