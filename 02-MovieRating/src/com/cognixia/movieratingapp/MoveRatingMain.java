@@ -35,6 +35,7 @@ public class MoveRatingMain {
 		}
 	}
 	
+	
 	private static User loginMenu() {
 		boolean runGuest = true;
 		User currentUser = null;
@@ -84,9 +85,7 @@ public class MoveRatingMain {
 				}
 				break;
 			case "3":
-				for (int i = 0; i < movieList.size(); i++) {
-					System.out.println(movieList.get(i).getTitle());
-				}
+				displayMovieList();
 				break;
 			case "4":
 				System.out.println("Exiting. Goodbye!");
@@ -108,28 +107,7 @@ public class MoveRatingMain {
 		do {
 			int choice = 0;
 			
-			// Header
-			System.out.println("+===========================================================+");
-			System.out.println("|  Movie                       Avg. Rating    # of Ratings |");
-			
-			// Movie List
-			for (int i = 0; i < movieList.size(); i++) {
-				Movie current = movieList.get(i);
-				if (current.getNumOfRatings() > 0) {
-					System.out.println("|  " + (i + 1) + ". " + 
-							String.format("%-24s %-14.2f %-13s", 
-							current.getTitle(), 
-							current.getAverageRating(),
-							current.getNumOfRatings()) + "|");
-				} else {
-					System.out.println("|  " + (i + 1) + ". " + 
-							String.format("%-24s %-14s %-13s", 
-							current.getTitle(), 
-							"N/A",
-							current.getNumOfRatings()) + "|");
-				}
-				
-			}
+			displayMovieList();
 			
 			// The final option is to exit, but the number varies based on how many movies are in memory
 			Integer exitCommandNum = (Integer)(movieList.size() + 1);
@@ -175,6 +153,30 @@ public class MoveRatingMain {
 		movieToRate.addRating(rating);
 		movieList.set(choice, movieToRate);
 		System.out.println("Rating added.");
+	}
+	
+	private static void displayMovieList() {
+		// Header
+		System.out.println("+===========================================================+");
+		System.out.println("|  Movie                       Avg. Rating    # of Ratings |");
+					
+		// Movie List
+		for (int i = 0; i < movieList.size(); i++) {
+			Movie current = movieList.get(i);
+			if (current.getNumOfRatings() > 0) {
+				System.out.println("|  " + (i + 1) + ". " + 
+						String.format("%-24s %-14.2f %-13s", 
+						current.getTitle(), 
+						current.getAverageRating(),
+						current.getNumOfRatings()) + "|");
+			} else {
+				System.out.println("|  " + (i + 1) + ". " + 
+						String.format("%-24s %-14s %-13s", 
+						current.getTitle(), 
+						"N/A",
+						current.getNumOfRatings()) + "|");
+			}
+		}
 	}
 
 	private static boolean validateEmail(String email) {
