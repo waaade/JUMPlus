@@ -112,9 +112,12 @@ public class MoveRatingMain {
 	}
 	
 	private static void displayUserRatings(User currentUser) {
+		System.out.println("+===========================================================+");
+		System.out.println("|  Movie                                       Your Rating |");
 		for (String i : currentUser.getRatings().keySet()) {
-			System.out.println("Movie: " + i + " Your Rating: " + currentUser.getRatings().get(i));
+			System.out.println("|  " + String.format("%-54s", i) + currentUser.getRatings().get(i) + " |");
 		}
+		System.out.println("+===========================================================+");
 	}
 
 
