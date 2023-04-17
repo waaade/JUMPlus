@@ -53,18 +53,29 @@ public class MoveRatingMain {
 			choice = scanner.nextLine();
 			switch(choice) {
 			case "1":
-				System.out.println("REGISTER - Enter Email Address:");
-				String newEmail = scanner.nextLine();
-				if (validateEmail(newEmail) && !userList.containsKey(newEmail)) {
-					System.out.println("Your email is " + newEmail + ". Enter a password:");
-					String newPassword = scanner.nextLine();
-					currentUser = new User(newEmail, newPassword);
-					userList.put(newEmail, currentUser);
-					System.out.println("Account created! Login to rate movies!");
+				while (currentUser == null) {
+					System.out.println("REGISTER - Enter Email Address:");
+					String newEmail = scanner.nextLine();
+					if (validateEmail(newEmail) && !userList.containsKey(newEmail)) {
+						System.out.println("Enter a password:");
+						String newPassword = scanner.nextLine();
+						System.out.println("Confirm Password:");
+						String confirm = scanner.nextLine();
+						if (newPassword.equals(confirm)) {
+							currentUser = new User(newEmail, newPassword);
+							userList.put(newEmail, currentUser);
+							System.out.println("Account created! Login to rate movies!");
+						}
+						else {
+							System.out.println("Passwords do not match. Please try again.");
+						}
+					}
+					else {
+						System.out.println("Invalid email, or email is already registered. Please try again.");
+					}
 				}
-				else {
-					System.out.println("Invalid email, or email is already registered. Please try again.");
-				}
+			
+				
 				break;
 			case "2":
 				// Attempt Login
