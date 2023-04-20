@@ -12,6 +12,13 @@ public class Teacher {
 		this.email = email;
 		this.password = password;
 	}
+	public Teacher(String name, String email, String password) {
+		super();
+		this.id = 0;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 	public int getId() {
 		return id;
 	}

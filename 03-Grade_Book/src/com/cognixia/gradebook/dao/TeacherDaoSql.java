@@ -41,9 +41,7 @@ public class TeacherDaoSql implements TeacherDao {
  			
 			
 		} catch(SQLException e) {
-			// uncomment if you're running into issues & want to know what's 
-			// going on
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		return teacherList;
@@ -79,11 +77,19 @@ public class TeacherDaoSql implements TeacherDao {
 
 	@Override
 	public boolean createTeacher(Teacher teacher) {
-		try (PreparedStatement pstmt = conn.prepareStatement("insert into teacher values(null, ?, ?, ?")) {
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement("insert into teacher (teacher_name, email, password) values (?,?,?)")) {
 			pstmt.setString(1, teacher.getName());
 			pstmt.setString(2, teacher.getEmail());
 			pstmt.setString(3, teacher.getPassword());
-			return true;	
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				System.out.println("Teacher added to database!");
+				return true;
+			}
+			else {
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -92,8 +98,21 @@ public class TeacherDaoSql implements TeacherDao {
 
 	@Override
 	public boolean deleteTeacher(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try (PreparedStatement pstmt = conn.prepareStatement("delete * from teacher where teacher_id = ?")) {
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.rowDeleted()) {
+				rs.close();
+				return true;
+			} 
+			else {
+				rs.close();
+				return false;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override

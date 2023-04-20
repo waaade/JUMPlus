@@ -4,6 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.cognixia.gradebook.dao.Teacher;
+import com.cognixia.gradebook.dao.TeacherDaoSql;
 
 
 public class GradebookRunner {
@@ -12,6 +17,15 @@ public class GradebookRunner {
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			System.out.println("Connection made!");
+//			Teacher testTeacher = new Teacher("Buzz Hickey", "buzzhickey@greendale.edu", "123456");
+			TeacherDaoSql td = new TeacherDaoSql(connection);
+//			td.createTeacher(testTeacher);
+			
+//			List<Teacher> allTeachers = td.getAllTeacher();
+//			for (int i = 0; i < allTeachers.size(); i++) {
+//				System.out.println(allTeachers.get(i));
+//			}
+			
 		
 		} catch (FileNotFoundException e) {
 			System.out.println("Couldn't load detail for connection, can't make connection");
@@ -22,6 +36,7 @@ public class GradebookRunner {
 		} catch (SQLException e) {
 			System.out.println("Couldn't connect to the db");
 		}
-	}
+
+	}	
 
 }
