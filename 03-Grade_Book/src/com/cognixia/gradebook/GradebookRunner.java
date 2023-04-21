@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import com.cognixia.gradebook.dao.ClassDaoSql;
+import com.cognixia.gradebook.dao.SchoolClass;
 import com.cognixia.gradebook.dao.Teacher;
 import com.cognixia.gradebook.dao.TeacherDaoSql;
 
@@ -18,7 +20,7 @@ public class GradebookRunner {
 			Connection connection = ConnectionManager.getConnection();
 			System.out.println("Connection made!");
 //			Teacher testTeacher = new Teacher("Buzz Hickey", "buzzhickey@greendale.edu", "123456");
-			TeacherDaoSql td = new TeacherDaoSql(connection);
+//			TeacherDaoSql td = new TeacherDaoSql(connection);
 //			td.createTeacher(testTeacher);
 			
 //			List<Teacher> allTeachers = td.getAllTeacher();

@@ -51,7 +51,8 @@ public class TeacherDaoSql implements TeacherDao {
 	@Override
 	public Optional<Teacher> getTeacherById(int id) {
 		try (
-			PreparedStatement pstmt = conn.prepareStatement("select * from teacher where teacher_id = ?") ) {
+			PreparedStatement pstmt = conn.prepareStatement("select * from teacher where teacher_id = ?") 
+			) {
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -100,13 +101,11 @@ public class TeacherDaoSql implements TeacherDao {
 	public boolean deleteTeacher(int id) {
 		try (PreparedStatement pstmt = conn.prepareStatement("delete * from teacher where teacher_id = ?")) {
 			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.rowDeleted()) {
-				rs.close();
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
 				return true;
 			} 
 			else {
-				rs.close();
 				return false;
 			}
 		} catch(SQLException e) {
