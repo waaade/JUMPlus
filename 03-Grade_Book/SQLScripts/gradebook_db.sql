@@ -72,3 +72,14 @@ INSERT INTO class_student VALUES(null, 4, 4, 95);
 
 
 SELECT * FROM class_student;
+
+# Select student names and grades from a single class
+SELECT 
+    student.student_name, student.student_id, class_student.class_student_grade
+FROM
+    class_student
+        INNER JOIN
+    student ON class_student.student_id = student.student_id
+WHERE
+    class_student.class_id = 1
+ORDER BY class_student.class_student_grade DESC;

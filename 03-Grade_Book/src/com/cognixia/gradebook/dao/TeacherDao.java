@@ -9,6 +9,8 @@ public interface TeacherDao {
 	
 	public Optional<Teacher> getTeacherById(int id);
 	
+	public Optional<Teacher> getTeacherByLogin(String email, String password);
+	
 	public boolean createTeacher( Teacher teacher );
 	
 	public boolean deleteTeacher( int id );

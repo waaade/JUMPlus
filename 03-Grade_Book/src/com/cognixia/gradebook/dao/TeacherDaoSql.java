@@ -75,6 +75,34 @@ public class TeacherDaoSql implements TeacherDao {
 			return Optional.empty();
 		}
 	}
+	
+	@Override
+	public Optional<Teacher> getTeacherByLogin(String email, String password) {
+		try (
+			PreparedStatement pstmt = conn.prepareStatement("select * from teacher where email =? AND password =?")
+			) {
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				int id = rs.getInt("teacher_id");
+				String name = rs.getString("teacher_name");
+				rs.close();
+				Teacher teacher = new Teacher(id, name, email, password);
+				Optional<Teacher> teacherFound = Optional.of(teacher);
+				return teacherFound;
+			}
+			else {
+				rs.close();
+				return Optional.empty();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Optional.empty();
+		}
+	}
 
 	@Override
 	public boolean createTeacher(Teacher teacher) {
@@ -99,7 +127,7 @@ public class TeacherDaoSql implements TeacherDao {
 
 	@Override
 	public boolean deleteTeacher(int id) {
-		try (PreparedStatement pstmt = conn.prepareStatement("delete * from teacher where teacher_id = ?")) {
+		try (PreparedStatement pstmt = conn.prepareStatement("delete from teacher where teacher_id = ?")) {
 			pstmt.setInt(1, id);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {

@@ -40,6 +40,38 @@ public class ClassStudentDaoSql implements ClassStudentDao {
 		}
 		return classStudentList;
 	}
+	
+	@Override
+	public List<StudentGrade> getStudentsByClassId(int classId, boolean orderByGrade) {
+		List<StudentGrade> studentList = new ArrayList<StudentGrade>();
+		String query = "select student.student_name, student.student_id, class_student.class_student_grade "
+				+ "FROM class_student INNER JOIN student ON class_student.student_id=student.student_id "
+				+ "WHERE class_student.class_id =?";
+		if (orderByGrade) {
+			query += " ORDER BY class_student.class_student_grade DESC";
+		}
+		else {
+			query += " ORDER BY student.student_name";
+		}
+		try( PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, classId);
+			ResultSet rs = pstmt.executeQuery();
+			while( rs.next() ) {
+				// iterate through all the values in the row
+				String name = rs.getString("student_name");
+				int id = rs.getInt("student_id");
+				int grade = rs.getInt("class_student_grade");
+				
+				StudentGrade studentGrade = new StudentGrade(name, id, grade);
+				studentList.add(studentGrade);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return studentList;
+	}
 
 	@Override
 	public Optional<ClassStudent> getClassStudentById(int id) {
@@ -89,7 +121,7 @@ public class ClassStudentDaoSql implements ClassStudentDao {
 
 	@Override
 	public boolean deleteClassStudent(int id) {
-		try (PreparedStatement pstmt = conn.prepareStatement("delete * from class_student where class_student_id = ?")) {
+		try (PreparedStatement pstmt = conn.prepareStatement("delete from class_student where class_student_id = ?")) {
 			pstmt.setInt(1, id);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -106,8 +138,44 @@ public class ClassStudentDaoSql implements ClassStudentDao {
 
 	@Override
 	public boolean updateClassStudent(ClassStudent classStudent) {
-		// TODO Auto-generated method stub
+		try (PreparedStatement pstmt = conn.prepareStatement("update class_student SET class_student_grade=? where class_id=? AND student_id=?")) {
+			pstmt.setInt(1, classStudent.getGrade());
+			pstmt.setInt(2, classStudent.getClassId());
+			pstmt.setInt(3, classStudent.getStudentId());
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
+	}
+
+	@Override
+	public Optional<ClassStudent> getByClassAndStudentId(int classId, int studentId) {
+		try (
+				PreparedStatement pstmt = conn.prepareStatement("select * from class_student where class_id =? AND student_id =?") 
+				) {
+			pstmt.setInt(1, classId);
+			pstmt.setInt(2, studentId);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int classStudentId = rs.getInt("class_student_id");
+				int grade = rs.getInt("class_student_grade");
+				rs.close();
+				ClassStudent classStudent = new ClassStudent(classStudentId, classId, studentId, grade);
+				Optional<ClassStudent> classStudentFound = Optional.of(classStudent);
+				return classStudentFound;
+			}
+		} catch (SQLException e) {
+				e.printStackTrace();
+				return Optional.empty();
+		}
+		return Optional.empty();
 	}
 
 }

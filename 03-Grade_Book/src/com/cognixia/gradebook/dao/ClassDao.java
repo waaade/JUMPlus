@@ -8,6 +8,8 @@ public interface ClassDao {
 	
 	public Optional<SchoolClass> getClassById(int id);
 	
+	public List<SchoolClass> getClassByTeacherId(int teacherId);
+	
 	public boolean createClass( SchoolClass newClass );
 	
 	public boolean deleteClass( int id );

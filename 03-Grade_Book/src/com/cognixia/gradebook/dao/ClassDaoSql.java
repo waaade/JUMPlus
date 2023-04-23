@@ -70,6 +70,28 @@ public class ClassDaoSql implements ClassDao {
 			return Optional.empty();
 		}
 	}
+	
+	@Override
+	public List<SchoolClass> getClassByTeacherId(int teacherId) {
+		List<SchoolClass> classList = new ArrayList<SchoolClass>();
+		try( PreparedStatement pstmt = conn.prepareStatement("select * from class where teacher_id = ?")) {
+			pstmt.setInt(1, teacherId);
+			ResultSet rs = pstmt.executeQuery();
+			while( rs.next() ) {
+				// iterate through all the values in the row
+				int id = rs.getInt("class_id");
+				String className = rs.getString("class_name");
+				
+				SchoolClass newClass = new SchoolClass(id, teacherId, className);
+				classList.add(newClass);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return classList;
+	}
 
 	@Override
 	public boolean createClass(SchoolClass newClass) {
