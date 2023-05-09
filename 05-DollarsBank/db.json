@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "george1",
+      "password": "12345",
+      "email": "george@email.com",
+      "accounts": [
+        {
+          "id": 1,
+          "type": "checking",
+          "balance": 2000,
+          "transactions": [
+            {
+              "id": 3,
+              "type": "deposit",
+              "amount": 500
+            },
+            {
+              "id": 2,
+              "type": "withdrawl",
+              "amount": 100
+            },
+            {
+              "id": 1,
+              "type": "withdrawl",
+              "amount": 400
+            }
+          ]
+        }
+      ]
+      
+    },
+    {
+      "id": 2,
+      "username": "paul2",
+      "password": "12345",
+      "email": "paul@email.com",
+      "accounts": [
+        {
+          "id": 1,
+          "balance": 10000,
+          "transactions": [
+            {
+              "id": 3,
+              "type": "deposit",
+              "amount": 500
+            },
+            {
+              "id": 2,
+              "type": "withdrawl",
+              "amount": 100
+            },
+            {
+              "id": 1,
+              "type": "withdrawl",
+              "amount": 400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "username": "john3",
+      "password": "12345",
+      "email": "john@email.com",
+      "accounts": [
+        {
+          "id": 1,
+          "type": "checking",
+          "balance": 50,
+          "transactions": [
+            {
+              "id": 1,
+              "type": "deposit",
+              "amount": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
