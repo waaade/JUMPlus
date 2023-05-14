@@ -1,0 +1,45 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 1px;
+}
+
+header {
+    background-color:mediumseagreen;
+    padding:2px;
+}
+
+h1 {
+    margin: 1%;
+}
+
+h2 {
+    margin: 1%;
+}
+
+p {
+    margin: 1%;
+}
+
+button {
+    margin: 2px;
+}
+
+img {
+    max-width: 95%;
+    max-height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+}
+
+#loginform {
+    background-color: whitesmoke;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 1px;
+    border-style: solid;
+}

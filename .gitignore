@@ -24,3 +24,7 @@ hs_err_pid*
 /.metadata/
 
 .DS_Store
+05-DollarsBank/db.json
+05-DollarsBank/images/card.jpg
+05-DollarsBank/images/cash.jpg
+05-DollarsBank/images/piggybank.jpg
