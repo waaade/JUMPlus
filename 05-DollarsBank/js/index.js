@@ -14,7 +14,7 @@ async function render() {
         
     } else {
         document.getElementById("mainbody").innerHTML = "<h2>Welcome</h2>" + 
-        "<p>By registering on this site, you'll be able to manage your bank accounts from anywhere." +
+        "<p>By registering on this site, you'll be able to manage your bank accounts from anywhere. " +
         "Deposit, withdraw, and transfer funds instantly. Sign up now!</p>" +
         "<a href='login.html'>Login</a> <a href='register.html'>Create Account</a>";   
     }

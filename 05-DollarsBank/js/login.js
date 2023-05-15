@@ -1,7 +1,8 @@
 const url = "http://localhost:3000/users"
 
 if (localStorage.currentUser) {
-    document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>";
+    document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>" +
+    "<a href='index.html'>Continue</a>";
 } else {
     document.getElementById("mainbody").innerHTML = "<h2>Login</h2>" + 
         "<div id='loginform' class='form'>" +
