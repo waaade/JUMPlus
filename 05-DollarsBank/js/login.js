@@ -22,7 +22,8 @@ async function login() {
         console.log(jsonData[0].id);
         if (jsonData.length === 1) {
             localStorage.setItem("currentUser", jsonData[0].id);
-            document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>";
+            document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>" +  
+            "<a href='index.html'>Continue</a>";;
         }
         else {
             document.getElementById("error").innerHTML = "<p>Error Logging In. Try again</p>";

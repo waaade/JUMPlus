@@ -23,7 +23,16 @@
 hs_err_pid*
 /.metadata/
 
-.DS_Store
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
 05-DollarsBank/db.json
 05-DollarsBank/images/card.jpg
 05-DollarsBank/images/cash.jpg

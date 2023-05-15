@@ -147,7 +147,9 @@ async function submitWithdrawl() {
         let accountUpdate = {
             "balance": balance
         };
-        await updateAccount(accountUpdate, accountId);
+        if (await updateAccount(accountUpdate, accountId)) {
+            document.getElementById("mainbody").innerHTML = "<p>Transaction Succesful!</p>";
+        }
     }
 }
 
@@ -188,7 +190,9 @@ async function submitTransfer() {
      let accountUpdateTo = {
              "balance": balance
      };
-     await updateAccount(accountUpdateTo, accountIdTo);
+     if (await updateAccount(accountUpdateTo, accountIdTo)) {
+        document.getElementById("mainbody").innerHTML = "<p>Transaction Succesful!</p>";
+     }
     
 }
 

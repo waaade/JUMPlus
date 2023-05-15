@@ -7,20 +7,40 @@
       "password": "12345",
       "email": "george@email.com",
       "address": "555 Sun Road"
+    },
+    {
+      "id": 2,
+      "name": "Paul",
+      "username": "paul2",
+      "password": "12345",
+      "email": "paul@email.com",
+      "address": "12 Penny Lane"
     }
   ],
   "accounts": [
     {
       "id": 1,
       "type": "Checking",
-      "balance": 2480,
+      "balance": 2000,
       "userId": 1
     },
     {
       "id": 2,
       "type": "Savings",
-      "balance": 6420,
+      "balance": 6100,
       "userId": 1
+    },
+    {
+      "id": 3,
+      "type": "Checking",
+      "balance": 100,
+      "userId": 2
+    },
+    {
+      "id": 4,
+      "type": "Savings",
+      "balance": 870,
+      "userId": 2
     }
   ],
   "transactions": [
@@ -205,6 +225,83 @@
       "userId": "1",
       "accountId": "2",
       "id": 26
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "480",
+      "userId": "1",
+      "accountId": "1",
+      "id": 27
+    },
+    {
+      "type": "Deposit",
+      "amount": "80",
+      "userId": "1",
+      "accountId": "2",
+      "id": 28
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "2",
+      "id": 29
+    },
+    {
+      "type": "Deposit",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "1",
+      "id": 30
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "1",
+      "id": 31
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "400",
+      "userId": "1",
+      "accountId": "2",
+      "id": 32
+    },
+    {
+      "type": "Deposit",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "2",
+      "id": 33
+    },
+    {
+      "type": "Deposit",
+      "amount": "1000",
+      "userId": "2",
+      "accountId": "4",
+      "id": 34
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "30",
+      "userId": "2",
+      "accountId": "4",
+      "id": 35
+    },
+    {
+      "type": "Transfer",
+      "amount": "100",
+      "userId": "2",
+      "accountId": "4",
+      "id": 36
+    },
+    {
+      "type": "Transfer",
+      "amount": "100",
+      "userId": "2",
+      "accountId": "3",
+      "id": 37
     }
   ]
 }

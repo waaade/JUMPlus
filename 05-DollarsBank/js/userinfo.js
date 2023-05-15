@@ -10,7 +10,8 @@ async function render() {
         if (jsonData) {
             document.getElementById("mainbody").innerHTML = "<h2>Your Info</h2><p>Your Name: " + jsonData.name
             + "</p><p>Your Email: " + jsonData.email + "</p><p>Your Username: " + jsonData.username +
-            "</p><p>Your Address: " + jsonData.address + "</p>";
+            "</p><p>Your Address: " + jsonData.address + "</p>" +
+            "<button onclick='logout()'>Logout</button>";
         }
         else {
             console.log("Error getting data");
@@ -19,6 +20,11 @@ async function render() {
         console.log(error);
     }
     } else {
-        document.getElementById("mainbody").innerHTML = "<p>You are not logged in!</p>";
+        document.getElementById("mainbody").innerHTML = "<p>You are logged out.</p>";
     }
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    render();
 }
