@@ -32,7 +32,7 @@ img {
     object-fit: cover;
 }
 
-#loginform {
+.form {
     background-color: whitesmoke;
     max-width: 90%;
     margin-left: auto;

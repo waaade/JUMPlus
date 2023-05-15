@@ -6,85 +6,51 @@
       "username": "george1",
       "password": "12345",
       "email": "george@email.com",
-      "address": "555 Sun Road",
-      "accounts": [
-        {
-          "id": 1,
-          "type": "checking",
-          "balance": 2000,
-          "transactions": [
-            {
-              "id": 3,
-              "type": "deposit",
-              "amount": 500
-            },
-            {
-              "id": 2,
-              "type": "withdrawl",
-              "amount": 100
-            },
-            {
-              "id": 1,
-              "type": "withdrawl",
-              "amount": 400
-            }
-          ]
-        }
-      ]
-      
+      "address": "555 Sun Road"
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "type": "checking",
+      "balance": 3000,
+      "userId": 1
     },
     {
       "id": 2,
-      "name": "Paul",
-      "username": "paul2",
-      "password": "12345",
-      "email": "paul@email.com",
-      "address": "12 Penny Lane",
-      "accounts": [
-        {
-          "id": 1,
-          "balance": 10000,
-          "transactions": [
-            {
-              "id": 3,
-              "type": "deposit",
-              "amount": 500
-            },
-            {
-              "id": 2,
-              "type": "withdrawl",
-              "amount": 100
-            },
-            {
-              "id": 1,
-              "type": "withdrawl",
-              "amount": 400
-            }
-          ]
-        }
-      ]
+      "type": "savings",
+      "balance": 5000,
+      "userId": 1
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "type": "deposit",
+      "amount": 50,
+      "userId": 1,
+      "accountId": 1
     },
     {
-      "id": 3,
-      "John": "John",
-      "username": "john3",
-      "password": "12345",
-      "email": "john@email.com",
-      "address": "9 Meadow Street",
-      "accounts": [
-        {
-          "id": 1,
-          "type": "checking",
-          "balance": 50,
-          "transactions": [
-            {
-              "id": 1,
-              "type": "deposit",
-              "amount": 50
-            }
-          ]
-        }
-      ]
+      "type": "deposit",
+      "amount": 50,
+      "userId": 1,
+      "accountId": 1,
+      "id": 2
+    },
+    {
+      "type": "Deposit",
+      "amount": "20",
+      "userId": "1",
+      "accountId": "1",
+      "id": 3
+    },
+    {
+      "type": "Deposit",
+      "amount": "100.50",
+      "userId": "1",
+      "accountId": "1",
+      "id": 4
     }
   ]
 }

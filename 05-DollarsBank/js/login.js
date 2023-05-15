@@ -4,7 +4,7 @@ if (localStorage.currentUser) {
     document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>";
 } else {
     document.getElementById("mainbody").innerHTML = "<h2>Login</h2>" + 
-        "<div id='loginform'>" +
+        "<div id='loginform' class='form'>" +
         "Username <input type='text' id='namefield'><br>" +
         "Password <input type='password' id='password'><br><br>" +
         "<button onclick='login()'>Submit</button></form>";
@@ -18,8 +18,9 @@ async function login() {
         const jsonData = await
         response.json();
         console.log(jsonData);
+        console.log(jsonData[0].id);
         if (jsonData.length === 1) {
-            localStorage.setItem("currentUser", 1);
+            localStorage.setItem("currentUser", jsonData[0].id);
             document.getElementById("mainbody").innerHTML = "<p>You are logged in!</p>";
         }
         else {
