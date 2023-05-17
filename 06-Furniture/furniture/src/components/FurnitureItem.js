@@ -1,0 +1,1 @@
+// View of a single furniture item

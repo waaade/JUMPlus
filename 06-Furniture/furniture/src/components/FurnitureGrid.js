@@ -1,0 +1,1 @@
+// View of all furniture items for easy shopping
