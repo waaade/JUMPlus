@@ -21,25 +21,25 @@
     {
       "id": 1,
       "type": "Checking",
-      "balance": 2000,
+      "balance": 1600,
       "userId": 1
     },
     {
       "id": 2,
       "type": "Savings",
-      "balance": 6100,
+      "balance": 6800,
       "userId": 1
     },
     {
       "id": 3,
       "type": "Checking",
-      "balance": 100,
+      "balance": 400,
       "userId": 2
     },
     {
       "id": 4,
       "type": "Savings",
-      "balance": 870,
+      "balance": 1870,
       "userId": 2
     }
   ],
@@ -302,6 +302,55 @@
       "userId": "2",
       "accountId": "3",
       "id": 37
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "2",
+      "id": 38
+    },
+    {
+      "type": "Deposit",
+      "amount": "500",
+      "userId": "1",
+      "accountId": "2",
+      "id": 39
+    },
+    {
+      "type": "Withdrawl",
+      "amount": "100",
+      "userId": "1",
+      "accountId": "1",
+      "id": 40
+    },
+    {
+      "type": "Transfer",
+      "amount": "300",
+      "userId": "1",
+      "accountId": "1",
+      "id": 41
+    },
+    {
+      "type": "Transfer",
+      "amount": "300",
+      "userId": "1",
+      "accountId": "2",
+      "id": 42
+    },
+    {
+      "type": "Deposit",
+      "amount": "300",
+      "userId": "2",
+      "accountId": "3",
+      "id": 43
+    },
+    {
+      "type": "Deposit",
+      "amount": "1000",
+      "userId": "2",
+      "accountId": "4",
+      "id": 44
     }
   ]
 }
