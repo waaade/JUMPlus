@@ -1,54 +1,64 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": 1,
+      "email": "theman@gmail.com",
+      "password": "12345",
+      "name": "Furniture Shopper"
+    },
+    {
+      "id": 2,
+      "email": "guy@gmail.com",
+      "password": "12345",
+      "name": "Cool Guy"
+    },
+    {
+      "name": "Bob Jones",
+      "email": "bobjones@email.com",
+      "password": "12345",
+      "id": 3
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Chair",
+      "description": "An awesome chair",
+      "price": 79.99
+    },
+    {
+      "id": 2,
+      "name": "Table",
+      "description": "Beautiful table",
+      "price": 199.99
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "items": [
         {
-            "id": 1, 
-            "email": "theman@gmail.com",
-            "password": "12345",
-            "name": "Furniture Shopper"
+          "itemId": 1,
+          "qty": 4
         },
         {
-            "id": 2,
-            "email": "guy@gmail.com",
-            "password": "12345",
-            "name": "Cool Guy"
+          "itemId": 2,
+          "qty": 1
         }
-    ],
-    "items": [
+      ],
+      "total": 519.95
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "items": [
         {
-            "id": 1,
-            "name": "Chair",
-            "description": "An awesome chair",
-            "price": 79.99
-        },
-        {
-            "id": 2,
-            "name": "Table",
-            "description": "Beautiful table",
-            "price": 199.99
+          "itemId": 1,
+          "qty": 1
         }
-    ],
-    "orders": [
-        {
-            "id": 1,
-            "userId": 1,
-            "items": [{
-                "itemId": 1,
-                "qty": 4
-            },
-            {
-                "itemId": 2,
-                "qty": 1
-            }],
-            "total": 519.95
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "items": [{
-                "itemId": 1,
-                "qty": 1
-            }],
-            "total": 79.99
-        }
-    ]
+      ],
+      "total": 79.99
+    }
+  ]
 }

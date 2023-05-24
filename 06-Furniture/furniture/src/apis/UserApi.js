@@ -1,6 +1,6 @@
 // For getting and creating user data
 
-const URI = "http://localhost:3000/users";
+const URI = "http://localhost:8000/users";
 
 const UserApi = {
     getUsers: (setUserList) => { // only for admin use
@@ -14,6 +14,7 @@ const UserApi = {
             })
             .catch((error) => { console.log(error) });
     },
+
     getUserById: (setUser, userId) => {
         fetch((URI + "/" + userId))
         .then((result) => {
@@ -68,3 +69,4 @@ const UserApi = {
     }
 }
 
+export default UserApi;
