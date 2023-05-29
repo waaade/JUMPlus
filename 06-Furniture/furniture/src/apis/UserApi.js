@@ -1,6 +1,6 @@
 // For getting and creating user data
 
-const URI = "http://localhost:8000/users";
+const URI = "http://localhost:3000/users";
 
 const UserApi = {
     getUsers: (setUserList) => { // only for admin use
@@ -27,6 +27,23 @@ const UserApi = {
         .catch((error) => { console.log(error)});
     },
 
+    getLogin: (email, password) => {
+        fetch((URI + "?email=" + email + "&password=" + password))
+        .then((result) => {
+            console.log(result);
+            return result.json();
+        })
+        .then((data) => {
+            console.log(data);
+            if (data.length === 1) {
+               sessionStorage.setItem("userId", data[0].id);
+            }
+            else {
+                throw new Error("Login failed");
+            }
+        })
+    },
+
     createUser: (userToCreate) => {
         fetch(URI, {
             method: "POST",
@@ -37,7 +54,7 @@ const UserApi = {
             .then(data => {
                 console.log("User Created");
                 console.log(data);
-
+                sessionStorage.setItem("userId", data.id);
             })
             .catch((error) => { console.log(error) })
     },

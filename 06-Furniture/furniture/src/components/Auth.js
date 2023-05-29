@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from './Login.js';
 import Register from './Register.js';
 
@@ -6,37 +6,56 @@ import Register from './Register.js';
 
 const Auth = () => {
     const [authMode, setAuthMode] = useState("signin");
-
+    const [loggedIn, setLoggedIn] = useState(false);
+    
     const toggleAuthMode = () => {
         setAuthMode(authMode === "signin" ? "signup" : "signin");
     }
-    if (authMode === "signin") {
+
+    useEffect(() => {
+        if (sessionStorage.getItem("userId") > 0) {
+            setLoggedIn(true);
+        }
+    }, [])
+
+    if (!loggedIn) {
+        if (authMode === "signin") {
+            return (
+                <div>
+                    <Login loggedIn={loggedIn}/>
+                    <div className="text-center">
+                        Don't have an account?{" "}
+                        <span className="link-primary" onClick={toggleAuthMode}>
+                            Register
+                        </span>
+                    </div>
+    
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Register />
+                    <div className="text-center">
+                        Already have an account?{" "}
+                        <span className="link-primary" onClick={toggleAuthMode}>
+                            Login
+                        </span>
+                    </div>
+                </div>
+    
+            )
+        }
+    }
+    else {
         return (
             <div>
-                <Login />
-                <div className="text-center">
-                    Don't have an account?{" "}
-                    <span className="link-primary" onClick={toggleAuthMode}>
-                        Register
-                    </span>
-                </div>
-
+                You are already logged in!
             </div>
-        )
-    } else {
-        return (
-            <div>
-                <Register />
-                <div className="text-center">
-                    Already have an account?{" "}
-                    <span className="link-primary" onClick={toggleAuthMode}>
-                        Login
-                    </span>
-                </div>
-            </div>
-
         )
     }
+
+ 
 
 }
 
