@@ -26,8 +26,12 @@ const FurnitureGrid = () => {
     const subtractFromCart = (id) => {
         let index = getIndex(id);
         if (index > -1) {
-            if (cartItems.current[index].qty > 0) {
+            if (cartItems.current[index].qty > 1) {
                 cartItems.current[index].qty -= 1;
+            }
+            else { // delete item from array if qty is 0
+                let removed = cartItems.current.splice(index, 1);
+                console.log("Removed " + removed);
             }
         }
     }
