@@ -15,6 +15,18 @@ const OrderApi = {
         .catch( (error) => { console.log(error)});
     },
 
+    getUserOrders: (userId, setOrderList) => {
+        fetch(URI + "?userId=" + userId)
+        .then( (result) => {
+            console.log(result);
+            return result.json();
+        })
+        .then( (data) => {
+            setOrderList(data);
+        })
+        .catch( (error) => { console.log(error)});
+    },
+
     createOrder: (orderToCreate) => {
         fetch(URI, {
             method: "POST",
