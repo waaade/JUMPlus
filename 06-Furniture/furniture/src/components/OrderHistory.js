@@ -48,14 +48,18 @@ const OrderHistory = () =>
                                         <td>{o.id}</td>
                                         <td>{o.total}</td>
                                         <td><table>
+                                            <thead>
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Quantity</th>
+                                            </thead>
+                                            <tbody>
                                             {o.items.map(i =>
                                             <tr key={i.itemId}>
                                                 <td>{i.itemId}</td>
                                                 <td>{getItemName(i.itemId)}</td>
                                                 <td>{i.qty}</td></tr>)}
+                                                </tbody>
                                             </table></td>
                                     </tr>)
                             }

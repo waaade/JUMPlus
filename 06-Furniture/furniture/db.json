@@ -73,6 +73,24 @@
       "name": "Table",
       "description": "Beautiful table",
       "price": 199.99
+    },
+    {
+      "name": "Gamer Chair",
+      "description": "Chair with gamer design",
+      "price": 149.99,
+      "id": 3
+    },
+    {
+      "name": "65 inch 4K OLED TV",
+      "description": "Watch movies on a gorgeous screen",
+      "price": 1999.99,
+      "id": 4
+    },
+    {
+      "name": "Couch",
+      "description": "Super comfy couch",
+      "price": 799.99,
+      "id": 5
     }
   ],
   "orders": [
@@ -209,6 +227,36 @@
       ],
       "total": "319.96",
       "id": 10
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "itemId": 1,
+          "qty": 4
+        },
+        {
+          "itemId": 2,
+          "qty": 5
+        }
+      ],
+      "total": "1319.91",
+      "id": 11
+    },
+    {
+      "userId": "8",
+      "items": [
+        {
+          "itemId": 2,
+          "qty": 1
+        },
+        {
+          "itemId": 1,
+          "qty": 4
+        }
+      ],
+      "total": "519.95",
+      "id": 12
     }
   ]
 }
