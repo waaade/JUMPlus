@@ -15,7 +15,7 @@ const Navbar = () => {
                             <Link className="nav-link" to={`/browse`}>Browse</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" to={`/cart`}>Cart</a>
+                            <Link className="nav-link" to={`/orders`}>Order History</Link>
                         </li>
                     </ul>
                 </div>

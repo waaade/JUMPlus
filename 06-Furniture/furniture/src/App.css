@@ -1,6 +1,8 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .form-signin {
   display: flex;
@@ -33,10 +35,27 @@ body {
 
 .navbar {
   background-color:skyblue;
+  margin-top: -2.5%;
 }
 
 .nav-link {
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+tfoot {
+  background-color: rgb(227, 227, 227);
+  font-weight: bold;
+}
+
+.discount {
+  font-style: italic;
 }

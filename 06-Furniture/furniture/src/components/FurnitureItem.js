@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const FurnitureItem = (props) => {
+const FurnitureItem = ({ id, name, description, price, initQty, addToCart, subtractFromCart }) => {
+    const [qty, setQty] = useState(initQty);
+    const plusQty = () => {
+        setQty(qty + 1);
+        addToCart(id, name, price);
+    }
+    const minusQty = () => {
+        if (qty > 0) {
+            setQty(qty - 1);
+            subtractFromCart(id);
+        }
+    }
     return (
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="..."></img>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+        <div className="card">
+            <img src="..." className="card-img-top" alt="..."></img>
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">{description}</p>
+                <p className="card-text">{price}</p>
+                <p className="card-text">{qty}</p>
+                <button onClick={plusQty} className="btn btn-primary">Add</button>
+                <button onClick={minusQty} className="btn btn-secondary">Remove</button>
+            </div>
         </div>
     )
 }
+
+export default FurnitureItem;

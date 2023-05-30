@@ -46,12 +46,6 @@ const Login = () => {
                         </input>
                         <label htmlFor="floatingPassword">Password</label>
                     </div>
-    
-                    <div className="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"></input> Remember me
-                        </label>
-                    </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                 </form>
             </main >

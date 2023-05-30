@@ -17,6 +17,42 @@
       "email": "bobjones@email.com",
       "password": "12345",
       "id": 3
+    },
+    {
+      "name": "Example Customer",
+      "email": "example@email.com",
+      "password": "12345",
+      "id": 4
+    },
+    {
+      "name": "Squidward Tentacles",
+      "email": "squidward@email.com",
+      "password": "12345",
+      "id": 5
+    },
+    {
+      "name": "Phoenix Wright",
+      "email": "phoenix@email.com",
+      "password": "12345",
+      "id": 6
+    },
+    {
+      "name": "Mia Fey",
+      "email": "mia@email.com",
+      "password": "12345",
+      "id": 7
+    },
+    {
+      "name": "Maya Fey",
+      "email": "maya@email.com",
+      "password": "12345",
+      "id": 8
+    },
+    {
+      "name": "Miles Edgeworth",
+      "email": "miles@email.com",
+      "password": "12345",
+      "id": 9
     }
   ],
   "items": [
